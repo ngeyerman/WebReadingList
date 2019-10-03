@@ -78,4 +78,11 @@ public class ListBook {
 	public String returnBookDetails() {
 		return "\nTitle is " + title + " by " +author+". Genre is " + genre + ".\n";
 	}
+
+	@Override
+	public String toString() {
+		return "ListBook [id=" + id + ", title=" + title + ", author=" + author + ", genre=" + genre + "]";
+	}
+	
+	
 }

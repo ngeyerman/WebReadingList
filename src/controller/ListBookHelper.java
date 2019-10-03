@@ -11,7 +11,7 @@ import model.ListBook;
 
 public class ListBookHelper {
 
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("ConsoleReadingList");
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UserReadingList");
 
 	public void insertBook(ListBook li) {
 		EntityManager em = emfactory.createEntityManager();
