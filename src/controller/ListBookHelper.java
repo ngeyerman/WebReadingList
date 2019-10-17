@@ -31,13 +31,11 @@ public class ListBookHelper {
 	public void deleteBook(ListBook toDelete) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<ListBook> typedQuery = em.createQuery(
-				"select li from ListBook li where li.title = :selectedTitle", // and li.genre=:selectedGenre", commented out to match deleteBook method
+		TypedQuery<ListBook> typedQuery = em.createQuery("SELECT lb from ListBook lb WHERE lb.title = :selectedTitle",
 				ListBook.class);
 
 		// sub parameter with actual data from the toDelete book
 		typedQuery.setParameter("selectedTitle", toDelete.getTitle());
-		//typedQuery.setParameter("selectedGenre", toDelete.getGenre());
 
 		// set option for only 1 result
 		typedQuery.setMaxResults(1);
@@ -93,10 +91,6 @@ public class ListBookHelper {
 		return foundBook;
 	}
 
-	public void cleanUp() {
-		emfactory.close();
-	}
-
 	public List<ListBook> searchForBookByAuthor(String authorName) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
@@ -109,4 +103,7 @@ public class ListBookHelper {
 		return foundBook;
 	}
 
+	public void cleanUp() {
+		emfactory.close();
+	}
 }

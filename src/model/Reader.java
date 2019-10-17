@@ -54,7 +54,7 @@ public class Reader {
 
 	@Override
 	public String toString() {
-		return "Shopper [id=" + id + ", readerName=" + readerName + "]";
+		return "Reader [id=" + id + ", readerName=" + readerName + "]";
 	}
 
 }

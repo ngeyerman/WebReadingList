@@ -5,11 +5,35 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+
+<script>
+function validateEditList(){
+	var listName =document.forms["editList"]["listName"].value;
+	var readerName=document.forms["editList"]["readerName"].value;
+	var currentBooks = document.forms["editList"]["currentBooks"].value;
+	
+	
+	if(listName==""){
+		alert("The list must have a name")
+		return false;
+	} 
+	
+	else if(readerName==""){
+		alert("The list must have a reader name.")
+		return false;
+	} else if(currentBooks.listVal<1){
+		alert("You must have a book to have a list.")
+		return false;
+	} 
+}
+</script>
 <title>Edit a list</title>
 </head>
 <body>
-<form action = "editExistingListServlet" method = "post">
+<form name="editList" action = "editExistingListServlet" onsubmit = "return validateEditList()" method = "post">
 List Name: <input type ="text" name = "listName" value="${listToEdit.listName}"><br/>
+
+
 Read date: <input type ="text" name = "month" placeholder = "mm" size="4" value="${listToEdit.readDate.getMonthValue()}">
 		   <input type ="text" name = "day" placeholder = "dd" size="4"	value="${listToEdit.readDate.getDayOfMonth()}">
 		   <input type = "text" name = "year" placeholder="yyyy" size="4" value="${listToEdit.readDate.getYear()}">
