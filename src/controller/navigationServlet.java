@@ -41,9 +41,9 @@ public class navigationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 
-		ListBookHelper dao = new ListBookHelper();
+		ListBookHelper lbh = new ListBookHelper();
 		String act = request.getParameter("doThisToBook");
 
 		if (act == null) {
@@ -53,8 +53,8 @@ public class navigationServlet extends HttpServlet {
 
 			try {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
-				ListBook bookToDelete = dao.searchForBookById(tempId);
-				dao.deleteBook(bookToDelete);
+				ListBook bookToDelete = lbh.searchForBookById(tempId);
+				lbh.deleteBook(bookToDelete);
 
 			} catch (NumberFormatException e) {
 				System.out.println("You must click a button.");
@@ -67,7 +67,7 @@ public class navigationServlet extends HttpServlet {
 		} else if (act.equals("Edit Book")) {
 			try {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
-				ListBook bookToEdit = dao.searchForBookById(tempId);
+				ListBook bookToEdit = lbh.searchForBookById(tempId);
 				request.setAttribute("bookToEdit", bookToEdit);
 				getServletContext().getRequestDispatcher("/edit-book.jsp").forward(request, response);
 			} catch (NumberFormatException e) {

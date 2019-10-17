@@ -2,10 +2,29 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<script>
+function validateForm(){//script to validate that the title, author, and genre are completed when adding a book
+	var title = document.forms["addBook"]['title'].value;
+	var author = document.forms["addBook"]['author'].value;
+	var genre = document.forms["addBook"]['genre'].value;
+	if(title ==""){
+		alert("A title must be provided.");
+		return false;
+	} else if(author ==""){
+		alert('An author must be provided.');
+		return false;
+	} else if(genre==""){
+		alert('A genre must be provided.')
+		return false;
+	}
+	
+}
+</script>
+
 <title>Reading List</title>
 </head>
 <body>
-	<form action="addBookServlet" method="post">
+	<form name="addBook" action="addBookServlet" onsubmit="return validateForm()" method="post">
 		Title: <input type="text" name="title"> 
 		Author: <input type="text" name="author"> 
 		Genre: <input type="text" name="genre"> 
